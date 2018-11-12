@@ -1,0 +1,20 @@
+apps:
+  - script: ./server/index.js
+    name: 'Koa2'
+    env: 
+      COMMON_VARIABLE: true
+    env_production:
+      NODE_ENV: production
+deploy:
+  production:
+    user: root
+    host:
+      - 148.70.101.122
+    port: 22
+    ref: origin/master
+    path: 
+      /www/koa2/production
+    ssh_options: StrictHostKeyChecking=no
+    post-deploy: 'npm install && npm run build && pm2 startOrRestart deploy.yaml --env production'
+    env:
+      NODE_ENV: 'production'
