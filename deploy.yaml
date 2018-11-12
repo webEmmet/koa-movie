@@ -12,9 +12,12 @@ deploy:
       - 148.70.101.122
     port: 22
     ref: origin/master
+    repo:
+      git@github.com:webEmmet/koa-movie.git
     path: 
       /www/koa2/production
     ssh_options: StrictHostKeyChecking=no
+    pre-deploy: git fetch --all
     post-deploy: 'npm install && npm run build && pm2 startOrRestart deploy.yaml --env production'
     env:
       NODE_ENV: 'production'
