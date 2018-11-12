@@ -2,7 +2,7 @@ const Koa = require('koa')
 const { resolve } = require('path')
 const cors = require('koa2-cors')
 const R = require('ramda')
-const MIDDLEWARES = ['common', 'router', 'parcel']
+const MIDDLEWARES = ['common', 'router']
 
 const useMiddlewares = (app) => {
   R.map(
